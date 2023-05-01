@@ -7,7 +7,7 @@ add_config_for_github() {
     echo "  IdentityFile  ~/.ssh/for_aws_to_github" >> ~/.ssh/config
 }
 
-ssh -o StrictHostKeyChecking=no ${{ env.SSH_USER }}@${{ env.SSH_HOST }} '
+ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
           mkdir -p ~/Desktop/${{ env.PROJECT_NAME }} &&
           cd ~/Desktop/${{ env.PROJECT_NAME }} && 
           # If github.com is not in known hosts, add it
