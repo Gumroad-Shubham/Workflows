@@ -1,3 +1,5 @@
+#!/bin/bash
+
 add_config_for_github() {
     echo "Host github.com" >> ~/.ssh/config
     echo "  Hostname      github.com" >> ~/.ssh/config
