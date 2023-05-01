@@ -1,13 +1,11 @@
 #!/bin/bash
-
-add_config_for_github() {
-    echo "Host github.com" >> ~/.ssh/config;
-    echo "  Hostname      github.com" >> ~/.ssh/config;
-    echo "  User          git" >> ~/.ssh/config;
-    echo "  IdentityFile  ~/.ssh/for_aws_to_github" >> ~/.ssh/config;
-}
-
 ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
+          add_config_for_github() {
+              echo "Host github.com" >> ~/.ssh/config;
+              echo "  Hostname      github.com" >> ~/.ssh/config;
+              echo "  User          git" >> ~/.ssh/config;
+              echo "  IdentityFile  ~/.ssh/for_aws_to_github" >> ~/.ssh/config;
+          } 
           mkdir -p ~/Desktop/'"$PROJECT_NAME"' &&
           cd ~/Desktop/'"$PROJECT_NAME"' && 
           # If github.com is not in known hosts, add it
@@ -24,6 +22,7 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
           # Store private key on ec2 so that it can pull from github
           if [ ! -f  ~/.ssh/for_aws_to_github ]; then
             echo '"$FOR_AWS_TO_GITHUB"' >> ~/.ssh/for_aws_to_github; 
+            sudo chmod 600 ~/.ssh/for_aws_to_github;
           fi &&
           # Tell ec2 that it needs to use the above pvt key to access github.com
           if [ ! -f ~/.ssh/config ]; then
