@@ -36,4 +36,4 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
               echo "Added configuration for github.com to ~/.ssh/config";
             fi
           fi &&
-          git pull git@github.com:bhamshu/$PROJECT_NAME.git'
+          git pull git@github.com:Gumroad-Shubham/$PROJECT_NAME.git'
