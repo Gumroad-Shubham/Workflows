@@ -8,8 +8,8 @@ add_config_for_github() {
 }
 
 ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
-          mkdir -p ~/Desktop/${{ env.PROJECT_NAME }} &&
-          cd ~/Desktop/${{ env.PROJECT_NAME }} && 
+          mkdir -p ~/Desktop/$PROJECT_NAME &&
+          cd ~/Desktop/$PROJECT_NAME && 
           # If github.com is not in known hosts, add it
           if ! ssh-keygen -F "github.com" >/dev/null; then
             # Add the host to known_hosts
@@ -36,4 +36,4 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
               echo "Added configuration for github.com to ~/.ssh/config"
             fi
           fi &&
-          git pull git@github.com:bhamshu/${{ env.PROJECT_NAME }}.git'
+          git pull git@github.com:bhamshu/$PROJECT_NAME.git'
