@@ -24,7 +24,7 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
           if [ ! -f ~/.ssh/config ]; then
             # Create the config file and add the configuration for GitHub
             touch ~/.ssh/config
-            add_config_for_github()
+            add_config_for_github
             echo "Created ~/.ssh/config and added configuration for github.com"
           else
             # Check if the configuration for GitHub already exists
@@ -32,7 +32,7 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
               echo "Configuration for github.com already exists in ~/.ssh/config"
             else
               # Add the configuration for GitHub to the existing config file
-              add_config_for_github()
+              add_config_for_github
               echo "Added configuration for github.com to ~/.ssh/config"
             fi
           fi &&
