@@ -11,10 +11,14 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
           mkdir -p ~/Desktop/$PROJECT_NAME &&
           cd ~/Desktop/$PROJECT_NAME && 
           # If github.com is not in known hosts, add it
+          echo "Inside directory: " &&
+          pwd &&
           if ! ssh-keygen -F "github.com" >/dev/null; then
             # Add the host to known_hosts
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-          fi
+          fi &&
+          echo "Inside directory: " &&
+          pwd &&
           git init &&
           # Store private key on ec2 so that it can pull from github
           if [ ! -f  ~/.ssh/for_aws_to_github ]; then
