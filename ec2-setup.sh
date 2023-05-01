@@ -15,6 +15,7 @@ ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
           pwd &&
           if ! ssh-keygen -F "github.com" >/dev/null; then
             # Add the host to known_hosts
+            touch ~/.ssh/known_hosts
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           fi &&
           echo "Inside directory: " &&
